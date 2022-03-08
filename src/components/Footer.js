@@ -1,5 +1,7 @@
 import "../styles.css";
 import React, { useState } from "react";
+import { set1, set2, set3, clearCompleted } from "../actions/actions";
+import { connect } from "react-redux";
 
 const Footer = (props) => {
   return (
@@ -75,7 +77,7 @@ const Footer = (props) => {
             }
           >
             <ul>
-              <li onClick={props.clearCompleted}>
+              <li onClick={() => props.clearCompleted(props.todos)}>
                 <a>Clear completed</a>
               </li>
             </ul>
@@ -87,4 +89,27 @@ const Footer = (props) => {
     </div>
   );
 };
-export default Footer;
+const mapStateToProps = (store) => {
+  return {
+    todos: store.rootReducer.todos,
+    mode: store.rootReducer.mode,
+    change: store.rootReducer.change,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  set1: () => {
+    dispatch(set1());
+  },
+  set2: () => {
+    dispatch(set2());
+  },
+  set3: () => {
+    dispatch(set3());
+  },
+
+  clearCompleted: () => {
+    dispatch(clearCompleted());
+  },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);
