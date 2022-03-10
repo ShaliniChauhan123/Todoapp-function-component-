@@ -1,6 +1,5 @@
 import "../src/styles.css";
-import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import React from "react";
 import { connect } from "react-redux";
 
 import TodoItem from "./components/TodoItem";
@@ -61,11 +60,17 @@ const App = (props) => {
             />
           </div>
         </div>
+
         {props.mode === "All" ? (
-          props.todos.map((todoDetail) => {
+          [...props.todos].map((todoDetail) => {
             return (
-              <div>
-                <TodoItem key={todoDetail.id} todos={todoDetail} />
+              <div key={todoDetail.id}>
+                <TodoItem
+                  todos={todoDetail}
+                  handleCheckboxChange={props.handleCheckboxChange}
+                  handleTodoEdit={props.handleTodoEdit}
+                  handleTodoDelete={props.handleTodoDelete}
+                />
               </div>
             );
           })
@@ -79,8 +84,13 @@ const App = (props) => {
               ),
             ].map((todoDetail) => {
               return (
-                <div>
-                  <TodoItem key={todoDetail.id} todos={todoDetail} />
+                <div key={todoDetail.id}>
+                  <TodoItem
+                    todos={todoDetail}
+                    handleCheckboxChange={props.handleCheckboxChange}
+                    handleTodoEdit={props.handleTodoEdit}
+                    handleTodoDelete={props.handleTodoDelete}
+                  />
                 </div>
               );
             })}
@@ -107,7 +117,6 @@ const mapDispatchToProps = (dispatch) => ({
   handleInputChangeInRedux: (val) => {
     dispatch(handleInputChangeInRedux(val));
   },
-
   add: (val) => {
     dispatch(add(val));
   },
@@ -117,10 +126,7 @@ const mapDispatchToProps = (dispatch) => ({
   handleTodoDelete: (val) => {
     dispatch(handleTodoDelete(val));
   },
-  handleCheckboxChange: (val) => {
-    dispatch(handleCheckboxChange(val));
-  },
-  handleTodoEdit1: (val, val1) => {
+  handleTodoEdit: (val, val1) => {
     dispatch(handleTodoEdit1(val, val1));
   },
   clearCompleted: () => {

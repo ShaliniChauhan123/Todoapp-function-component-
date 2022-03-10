@@ -79,15 +79,13 @@ const rootReducer = (state = initState, action) => {
           if (item.id === action.clickedId) {
             item.completed = !item.completed;
           }
-          if (getCompletedCount(state.todos) === state.todos.length) {
-            state.change = "yes";
-          } else {
-            state.change = "no";
-          }
 
           return item;
         }),
-        change: state.change,
+        change:
+          getCompletedCount([...state.todos]) === state.todos.length
+            ? "yes"
+            : "no",
       };
 
     case "ALL":
