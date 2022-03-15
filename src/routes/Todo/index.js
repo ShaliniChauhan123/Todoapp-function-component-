@@ -1,11 +1,10 @@
-import "../src/styles.css";
-import React, { useState } from "react";
+import "../../../src/styles.css";
+import React from "react";
 import { connect } from "react-redux";
-import { BrowserRouter, Route } from "react-router-dom";
-import TodoItem from "./components/TodoItem";
-import Footer from "./components/Footer";
-import expandMore from "./assets/expandMore.svg";
-import expandMore1 from "./assets/expandMore1.svg";
+import TodoItem from "../../components/TodoItem";
+import Footer from "../../components/Footer";
+import expandMore from "../../assets/expandMore.svg";
+import expandMore1 from "../../assets/expandMore1.svg";
 import {
   add,
   selectAll,
@@ -14,7 +13,7 @@ import {
   handleTodoDelete,
   handleTodoEdit1,
   clearCompleted,
-} from "./actions/actions";
+} from "../../actions/actions";
 
 const Todo = (props) => {
   const getCompletedCount = (todos) =>

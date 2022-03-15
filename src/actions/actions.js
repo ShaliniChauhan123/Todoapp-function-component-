@@ -36,7 +36,6 @@ export function handleTodoDelete(clickedId) {
   };
 }
 export function handleCheckboxChange(clickedId) {
-  console.log("clickedid", clickedId);
   return {
     type: "CHECKBOXCHANGE",
     clickedId: clickedId,
