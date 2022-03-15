@@ -1,7 +1,6 @@
 import "../styles.css";
 import React, { useState } from "react";
 import done from "../assets/done.svg";
-// /import { connect } from "react-redux";
 
 const TodoItem = (props) => {
   const [inputMode, setInputMode] = useState(false);
@@ -15,7 +14,6 @@ const TodoItem = (props) => {
               className={props.todos.completed ? "circlegreen" : "circle"}
               onClick={() => props.handleCheckboxChange(props.todos.id)}
             >
-              {console.log("Qw", props.todos.completed)}
               {props.todos.completed ? (
                 <img className="doneimg" src={done} alt="done" />
               ) : (
@@ -30,7 +28,7 @@ const TodoItem = (props) => {
                 className="newtodocopy"
                 value={props.todos.task}
                 onChange={(e) =>
-                  props.handleTodoEdit1(e.target.value, props.todos.id)
+                  props.handleTodoEdit(e.target.value, props.todos.id)
                 }
                 onKeyPress={(e) => {
                   if (e.key === "Enter") {
@@ -58,21 +56,4 @@ const TodoItem = (props) => {
     </div>
   );
 };
-// const mapStateToProps = (store) => {
-//   return {
-//     todos1: store.rootReducer.todos,
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => ({
-//   handleCheckboxChange: (val) => {
-//     dispatch(handleCheckboxChange(val));
-//   },
-//   handleTodoDelete: (val) => {
-//     dispatch(handleTodoDelete(val));
-//   },
-//   handleTodoEdit1: (val, val1) => {
-//     dispatch(handleTodoEdit1(val, val1));
-//   },
-// });
 export default TodoItem;
