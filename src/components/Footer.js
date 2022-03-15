@@ -1,4 +1,5 @@
 import "../styles.css";
+//import { BrowserRouter, Link } from "react-router-dom";
 import React, { useState } from "react";
 import { set1, set2, set3, clearCompleted } from "../actions/actions";
 import { connect } from "react-redux";
@@ -43,7 +44,6 @@ const Footer = (props) => {
             </div>
             <span> eft</span>
           </div>
-
           <div className="filters2">
             <ul>
               <li onClick={props.set1}>
@@ -71,6 +71,7 @@ const Footer = (props) => {
               </li>
             </ul>
           </div>
+
           <div
             className={
               props.getCompletedCount >= 1 ? "filters3" : "filtersnone"
@@ -78,7 +79,7 @@ const Footer = (props) => {
           >
             <ul>
               <li onClick={() => props.clearCompleted(props.todos)}>
-                <a>Clear completed</a>
+                Clear completed
               </li>
             </ul>
           </div>

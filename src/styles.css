@@ -116,7 +116,7 @@
 .filters1 {
   display: flex;
   justify-content: flex-start;
-  width: 35%;
+  width: 25%;
   padding-top: 15px;
   padding-left: 15px;
 }
@@ -137,6 +137,11 @@
   border-radius: 3px;
   cursor: pointer;
 }
+.filters3 ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .filters2 ul li {
   padding: 3px;
 }
